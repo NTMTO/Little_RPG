@@ -48,15 +48,19 @@ class Char():
         self.terrified = None
         self.defeated = None
 
+
+    def __repr__(self):
+        return self.__doc__
+
     @terror
     @trance
     def attack(self, opponent):
         winner, diff = self.test('damage', 'strength', opponent)
         if self == winner:
-            opponent.deal_damage(diff)
             attack_val = self.damage - opponent.armor
             result = opponent.hitpoints - attack_val
             printout(f"{self.name} attacked {opponent.name} for {attack_val} hit points")
+            opponent.deal_damage(diff)
             opponent.hitpoints = result
         else:
             printout(f"{self.name}'s attack narrowly missed its mark!")
@@ -200,6 +204,7 @@ def check_enemy_def(enemies, enemy):
 
 def start():
     hero = Hero(Char)
+    prinout(hero.__repr__())
     enemies = generate_enemies()
     enemies[0].spawn()
     while len(enemies) > 0:
