@@ -204,7 +204,7 @@ def check_enemy_def(enemies, enemy):
 
 def start():
     hero = Hero(Char)
-    prinout(hero.__repr__())
+    printout(hero.__repr__())
     enemies = generate_enemies()
     enemies[0].spawn()
     while len(enemies) > 0:
